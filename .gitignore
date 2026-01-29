@@ -1,0 +1,21 @@
+# Backend
+backend/polls.db
+backend/polls.db-shm
+backend/polls.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
