@@ -18,10 +18,12 @@ function Home() {
     try {
       setLoading(true)
       const response = await axios.get(`/api/polls?page=${page}`)
-      setPolls(response.data.polls)
-      setTotal(response.data.total)
+      setPolls(response.data.polls || [])
+      setTotal(response.data.total || 0)
     } catch (error) {
       toast.error('Failed to fetch polls')
+      setPolls([])
+      setTotal(0)
     } finally {
       setLoading(false)
     }
@@ -40,7 +42,7 @@ function Home() {
         <div className="flex justify-center items-center min-h-[400px]">
           <span className="loading loading-spinner loading-lg"></span>
         </div>
-      ) : polls.length === 0 ? (
+      ) : !polls || polls.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-xl text-base-content/70">No polls available yet. Be the first to create one!</p>
         </div>
